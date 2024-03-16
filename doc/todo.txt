@@ -1,0 +1,2 @@
+1. disable hessian.W computation as we don't need it stored. - done
+
