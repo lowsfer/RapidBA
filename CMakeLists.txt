@@ -51,7 +51,7 @@ target_compile_definitions(RapidBA PRIVATE RBA_SANITY_CHECK=0)
 
 target_include_directories(RapidBA PRIVATE /opt/cub-1.8.0)
 
-add_executable(tests
+add_executable(tests_rapidba
         test/DerivativeTest.cpp
         test/TestModel.h test/TestModel.cpp
         test/HessianTest.cpp
@@ -60,10 +60,10 @@ add_executable(tests
         test/PerfTest.cpp
         test/PCGTest.cpp test/utils_test.cpp test/DeltaBTestAndDampTest.cpp
         test/ReduceTest.cpp test/BundleSolverTest.cpp)
-target_compile_definitions(tests PRIVATE UNIT_TEST)
-target_link_libraries(tests
+target_compile_definitions(tests_rapidba PRIVATE UNIT_TEST)
+target_link_libraries(tests_rapidba
         gtest gtest_main cudart RapidBA)
 
-add_executable(demo main.cpp traits/intrinsic.h)
-target_link_libraries(demo
+add_executable(demo_rapidba main.cpp traits/intrinsic.h)
+target_link_libraries(demo_rapidba
         RapidBA cudart)
