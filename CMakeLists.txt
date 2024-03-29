@@ -26,9 +26,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAG} -march=native -pipe -Wall -Werror -Wno-un
 
 set(CUDA_SEPARABLE_COMPILATION OFF)
 
-set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -lineinfo -keep --expt-relaxed-constexpr --use_fast_math") #-res-usage
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -lineinfo -keep --expt-relaxed-constexpr") #-res-usage
 set(CUDA_PTXAS_FLAGS_RELEASE "${CUDA_PTXAS_FLAGS_RELEASE} -warn-lmem-usage -warn-spills -Werror") # -v
-set(CMAKE_CUDA_FLAGS_RELEASE "${CMAKE_CUDA_FLAGS_RELEASE} -Xptxas='${CUDA_PTXAS_FLAGS_RELEASE}'")
+set(CMAKE_CUDA_FLAGS_RELEASE "${CMAKE_CUDA_FLAGS_RELEASE} --use_fast_math -DNDEBUG -Xptxas='${CUDA_PTXAS_FLAGS_RELEASE}'")
+
 add_library(RapidBA
         RapidBA.cpp RapidBA.h
         derivative.h kernel.h cuda_hint.cuh
